@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐</title>
+    <style>
+        /*整个页面范围*/
+        #big {
+            width: 100%;
+            height: 750px;
+            background-color: rgba(224, 124, 42, 0.801);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /*侧边栏，独立于主体*/
+        #leftBox {
+            width: 200px;
+            height: 100%;
+            background-color: #f0f3f6;
+            float: left;
+        }
+
+        #logo {
+            float: top;
+        }
+
+        #leftList {
+            width: 200px;
+            height: 40%;
+            background-color: transparent;
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+
+        #recommend {
+            width: 160px;
+            height: 35px;
+            background-color: #df5152;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        #recommend:hover {
+            background-color: #df5152;
+        }
+
+        #recommendword {
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #recommendimg {
+            height: 30px;
+        }
+
+        #jingxuan {
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+        }
+
+        #jingxuan:hover {
+            background-color: #e5e8ec;
+        }
+
+        #jingxuanword {
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #jingxuanimg {
+            height: 32px;
+        }
+
+        #divide {
+            color: rgb(167, 165, 165);
+            padding-top: 10px;
+        }
+
+        #my {
+            width: 40px;
+            height: 20px;
+            font-size: 12px;
+            color: rgb(167, 165, 165);
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        #favorite {
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+        }
+
+        #favorite:hover {
+            background-color: #e5e8ec;
+        }
+
+        #favoriteword {
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #favoriteimg {
+            height: 32px;
+        }
+
+        #thanks{
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        #thanks:hover {
+            background-color: #e5e8ec;
+        }
+
+        #thanksword {
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        /*右侧主体*/
+        #rightMainBox {
+            width: 80%;
+            height: 100%;
+            background-color: rgb(253, 253, 251);
+            float: right;
+            flex-grow: 1;
+        }
+
+        /*右侧主体上方栏，包括左上搜索组和右上头像组*/
+        #topBox {
+            width: 100%;
+            height: 70px;
+            background-color: #f7f9fc;
+            float: top;
+        }
+
+        /*右上头像*/
+        #topRight {
+            height: 70px;
+            width: 50%;
+            float: right;
+        }
+
+        ul1 {
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        li1 {
+            float: right;
+            background-color: #f7f9fc;
+        }
+
+        a1 {
+            padding: 0 5px;
+            height: 70px;
+            line-height: 70px;
+            display: block;
+            color: gray;
+            text-decoration: none;
+        }
+
+        a1:hover {
+            color: black;
+        }
+
+        /*左上搜索*/
+        #topLeft {
+            height: 70px;
+            width: 36%;
+            float: left;
+            background-color: #f7f9fc;
+            display: flex;
+        }
+
+        #backButton {
+            float: left;
+            margin: 0 auto;
+        }
+
+        #shiqu {
+            height: 70px;
+            width: 15%;
+            float: right;
+            margin-right: 25px;
+            background-color: transparent
+        }
+
+        #imageshiqu {
+            float: right;
+        }
+
+        /*考虑把放大镜图标（带搜索功能按钮）和透明搜索框放进大搜索盒子里*/
+        #bigSearchBox {
+            width: 250px;
+            height: 35px;
+            background: #f2eff7;
+            border: 1px solid #ece1fd;
+            border-radius: 10px;
+            margin: auto 0 auto 10px;
+            display: flex;
+            position: relative;
+        }
+
+        input[type="search"] {
+            width: 190px;
+            height: 30px;
+            border: 1px solid transparent;
+            background-color: transparent;
+            border-radius: 5px;
+            font-size: 14px;
+            color: gray;
+        }
+
+        input[type="search"]:focus {
+            border-color: transparent;
+            outline: none;
+        }
+
+        #botton1 {
+            border-color: transparent;
+            background-color: transparent;
+            margin-bottom: 2px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 轮播图外层容器，用于定位按钮 */
+        .carousel-container {
+            position: relative;
+            width: 420px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-left: 40px;
+        }
+
+        .total {
+            height: 165px;
+            width: 420px;
+            overflow: hidden;
+        }
+
+        #banner {
+            height: 165px;
+            width: 2160px;
+        }
+
+        li {
+            float: left;
+            width: 420px;
+            height: 165px;
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 按钮样式 */
+        .pre,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+        }
+
+        .pre {
+            left: -30px;
+            /* 调整到轮播图左侧外部 */
+        }
+
+        .next {
+            right: -30px;
+            /* 调整到轮播图右侧外部 */
+        }
+
+        /* 小圆点容器样式 */
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        /* 小圆点样式 */
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        /* 激活状态的小圆点样式 */
+        .dot.active {
+            background-color: white;
+        }
+
+        #tuijiantitle {
+            margin-left: 40px;
+            margin-top: 25px;
+        }
+
+        #tuijian {
+            width: 95%;
+            height: 250px;
+            background-color: rgb(245, 248, 245);
+            margin-top: 10px;
+            margin-left: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #tuijianbox {
+            width: 175px;
+            height: 250px;
+            border-radius: 15px;
+            background-color: #68696981;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* 热搜榜样式 */
+        #hot-search-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            background-color: white;
+            display: none;
+            z-index: 1;
+        }
+
+        #hot-search-list li {
+            padding: 10px;
+            cursor: pointer;
+            height: 20px;
+            width: 200px;
+        }
+
+        #hot-search-list li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="big">
+        <div id="leftBox">
+            <div id="logo">
+                <img src="applogo2.png">
+            </div>
+            <div id="leftList">
+                <div id="recommend">
+                    <div id="recommendimg"><img src="recommendimg.png"></div>
+                    <div id="recommendword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/main.html"
+                            style="text-decoration: none;">推荐</a>
+                    </div>
+                </div>
+                <div id="jingxuan">
+                    <div id="jingxuanimg"><img src="jingxuanimg.png"></div>
+                    <div id="jingxuanword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/jingxuan.html"
+                            style="text-decoration: none;">精选</a>
+                    </div>
+                </div>
+                <div id="divide">______________________</div>
+                <div id="my">我的</div>
+                <div id="favorite">
+                    <div id="favoriteimg"><img src="favoriteimg.png"></div>
+                    <div id="facoriteword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/favorite.html"
+                            style="text-decoration: none;">我喜欢的音乐</a>
+                    </div>
+                </div>
+                <div id="thanks">
+                    <div id="thanksword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/thanks.html" style="text-decoration: none;">鸣谢</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="rightMainBox">
+            <div id="topBox">
+                <div id="topRight">
+                    <ul1>
+                        <li1>
+                            <a1 href=""><img src="other2.png"></a1>
+                        </li1>
+                        <li1>
+                            <a1 href="">\/</a1>
+                        </li1>
+                        <li1>
+                            <a1 href=""><img src="level.png"></a1>
+                        </li1>
+                        <li1>
+                            <a1 href="">邮兵1号</a1>
+                        </li1>
+                        <li1>
+                            <a1 href=""><img src="headimage2.png"></a1>
+                        </li1>
+                    </ul1>
+                </div>
+                <div id="topLeft">
+                    <div id="backButton"><img src="back1.png" title="后退"></div>
+                    <div id="bigSearchBox">
+                        <button onclick="performSearch()" id="botton1"><img src="searchbotton2.png"></button>
+                        <input type="search" id="search1" placeholder="搜索..." list="suggestions" aria-label="搜索框">
+                        <ul id="hot-search-list">
+                            
+                        </ul>
+                    </div>
+                    <div id="shiqu">
+                        <div id="imageshiqu"><img src="shiqu.png" title="听歌识曲"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <button class="pre"><img src="pre.png"></button>
+                <div class="total">
+                    <ul id="banner">
+                        <li><img src="1.png"></li>
+                        <li><img src="2.png"></li>
+                        <li><img src="3.png"></li>
+                        <li><img src="4.png"></li>
+                        <li><img src="5.png"></li>
+                    </ul>
+                </div>
+                <button class="next"><img src="next.png"></button>
+                <div class="dots"></div>
+            </div>
+            <div id="tuijiantitle">
+                <h3>精选推荐</h3>
+            </div>
+            <div id="tuijian">
+                <div id="tuijianbox"><img src="gedan1.png" style="height: 180px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球R&B趋势 | Muni Long全新单曲甜蜜热播中</a></div>
+                <div id="tuijianbox"><img src="gedan3.png" style="height: 180px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球说唱趋势 | bbno$全新单曲持续热播中</a></div>
+                <div id="tuijianbox"><img src="gedan5.png" style="height: 180px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">华语说唱趋势 | KEY.L刘聪最新单曲火热循环中</a></div>
+                <div id="tuijianbox"><img src="gedan6.png" style="height: 180px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球摇滚趋势 | Inhaler新单热播中</a></div>
+                <div id="tuijianbox"><img src="gedan2.png" style="height: 180px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">Balter音乐节 | 英国人气电子乐队Kurupt FM酷炫亮相</a></div>
+                <div id="tuijianbox"><img src="gedan9.png" style="height: 180px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">Morning Classical | 收获今日的第一缕阳光</a></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 轮播图部分
+        document.addEventListener("DOMContentLoaded", function () {
+            var curindex = 0;
+            var banner = document.getElementById("banner");
+            var lis = banner.getElementsByTagName("li");
+            var maxlen = lis.length - 1;
+            var timer = null;
+            var width = 420;
+            var dotsContainer = document.querySelector('.dots');
+
+            // 动态生成小圆点
+            for (var i = 0; i < lis.length; i++) {
+                var dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('mouseover', (function (index) {
+                    return function () {
+                        clearInterval(timer);
+                        curindex = index;
+                        changeSlide(index);
+                        timer = setInterval(change_auto, 5000);
+                    };
+                })(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            timer = setInterval(change_auto, 5000);
+
+            function change_auto() {
+                if (curindex < maxlen) {
+                    curindex++;
+                    get_next();
+                } else {
+                    curindex = 0;
+                    get_reset();
+                }
+                updateDots();
+            }
+
+            function get_next() {
+                banner.style.marginLeft = "-" + width * curindex + "px";
+                banner.style.transition = "0.3s";
+                updateDots();
+            }
+
+            function get_reset() {
+                banner.style.marginLeft = "0px";
+                banner.style.transition = "0s";
+                updateDots();
+            }
+
+            function changeSlide(index) {
+                curindex = index;
+                banner.style.marginLeft = "-" + width * curindex + "px";
+                banner.style.transition = "0.3s";
+                updateDots();
+            }
+
+            function updateDots() {
+                var dots = document.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    if (index === curindex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            //上一张按钮
+            document.querySelector('.pre').addEventListener('click', function () {
+                clearInterval(timer);
+                if (curindex > 0) {
+                    curindex--;
+                    get_next();
+                } else {
+                    curindex = maxlen;
+                    banner.style.marginLeft = "-" + width * curindex + "px";
+                    banner.style.transition = "0.3s";
+                }
+                updateDots();
+                timer = setInterval(change_auto, 5000);
+            });
+
+            //下一张按钮
+            document.querySelector('.next').addEventListener('click', function () {
+                clearInterval(timer);
+                if (curindex < maxlen) {
+                    curindex++;
+                    get_next();
+                } else {
+                    curindex = 0;
+                    get_reset();
+                }
+                updateDots();
+                timer = setInterval(change_auto, 5000);
+            });
+        });
+
+
+        const searchInput = document.getElementById('search1');
+        const hotSearchList = document.getElementById('hot-search-list');
+
+
+        const hotSearchData = [
+            '跳楼机',
+            '唯一',
+            '消散对白',
+            '复刻回忆',
+            '舍得',
+            '越来越不懂',
+            '爱错'
+        ];
+
+        // 点击显示热搜
+        searchInput.addEventListener('click', function () {
+            hotSearchList.innerHTML = '';
+            hotSearchData.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                listItem.addEventListener('click', function () {
+                    searchInput.value = item;
+                    hotSearchList.style.display = 'none';
+                    performSearch(item);
+                });
+                hotSearchList.appendChild(listItem);
+            });
+            hotSearchList.style.display = 'block';
+        });
+
+
+        //搜索
+        function performSearch(keywords = searchInput.value.trim()) {
+            if (keywords) {
+                const searchUrl = `http://localhost:3000/docs/#/?id=%e6%90%9c%e7%b4%a2?keywords=${encodeURIComponent(keywords)}&type=1`;
+
+                fetch(searchUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('网络响应异常');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('搜索结果:', data);
+                    })
+                    .catch(error => {
+                        console.error('搜索出错:', error);
+                    });
+            }
+        }
+    </script>
+</body>
+
+</html>

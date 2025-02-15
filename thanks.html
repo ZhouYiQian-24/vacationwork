@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐</title>
+    <style>
+        /*整个页面范围*/
+        #big {
+            width: 100%;
+            height: 750px;
+            background-color: rgba(224, 124, 42, 0.801);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /*侧边栏，独立于主体*/
+        #leftBox {
+            width: 200px;
+            height: 100%;
+            background-color: #f0f3f6;
+            float: left;
+        }
+
+        #logo {
+            float: top;
+        }
+
+        #leftList{
+            width: 200px;
+            height: 40%;
+            background-color: #f0f3f6;
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+
+        #recommend{
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        #recommend:hover{
+            background-color: #e5e8ec;
+        }
+
+        #recommendword{
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #recommendimg{
+            height: 30px;
+        }
+
+        #jingxuan{
+            width: 160px;
+            height: 35px;
+            background-color: #e5e8ec;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+        }
+
+        #jingxuan:hover{
+            background-color: #e5e8ec;
+        }
+
+        #jingxuanword{
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;            
+        }
+
+
+        #jingxuanimg{
+            height: 32px;
+        }
+
+        #divide{
+            color: rgb(167, 165, 165);
+            padding-top: 10px;
+        }
+
+        #my{
+            width: 40px;
+            height: 20px;
+            font-size: 12px;
+            color: rgb(167, 165, 165);
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+
+        #favorite{
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+
+        }
+
+        #favorite:hover{
+            background-color: #f0f3f6;
+        }
+
+        #favoriteword{
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;            
+        }
+
+
+        #favoriteimg{
+            height: 32px;
+        }
+
+        /*右侧主体*/
+        #rightMainBox {
+            width: 80%;
+            height: 100%;
+            background-color: rgb(245, 245, 242);
+            float: right;
+            flex-grow: 1;
+        }
+
+        /*右侧主体上方栏，包括左上搜索组和右上头像组*/
+        #topBox {
+            width: 100%;
+            height: 70px;
+            background-color: #f7f9fc;
+            float: top;
+        }
+
+        /*右上头像*/
+        #topRight {
+            height: 70px;
+            width: 50%;
+            float: right;
+        }
+
+        ul1 {
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        li1 {
+            float: right;
+            background-color: #f7f9fc;
+        }
+
+        a1 {
+            padding: 0 5px;
+            height: 70px;
+            line-height: 70px;
+            display: block;
+            color: gray;
+            text-decoration: none;
+        }
+
+        a1:hover {
+            color: black;
+        }
+
+        /*左上搜索*/
+        #topLeft {
+            height: 70px;
+            width: 36%;
+            float: left;
+            background-color: #f7f9fc;
+            display: flex;
+        }
+
+        #backButton {
+            float: left;
+            margin: 0 auto;
+        }
+
+        #shiqu {
+            height: 70px;
+            width: 15%;
+            float: right;
+            margin-right: 25px;
+            background-color: transparent
+        }
+
+        #imageshiqu {
+            float: right;
+        }
+
+        /*考虑把放大镜图标（带搜索功能按钮）和透明搜索框放进大搜索盒子里*/
+        #bigSearchBox {
+            width: 250px;
+            height: 35px;
+            background: #f2eff7;
+            border: 1px solid #ece1fd;
+            border-radius: 10px;
+            margin: auto 0 auto 10px;
+            display: flex;
+        }
+
+
+        input[type="search"] {
+            width: 190px;
+            height: 30px;
+            border: 1px solid transparent;
+            background-color: transparent;
+            border-radius: 5px;
+            font-size: 14px;
+            color: gray;
+        }
+
+        input[type="search"]:focus {
+            border-color: transparent;
+            outline: none;
+        }
+
+        #botton1 {
+            border-color: transparent;
+            background-color: transparent;
+            margin-bottom: 2px;
+
+        }
+        
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #gedanxq{
+            width: 100%;
+            height: 200px;
+            background-color: #f8f6f6;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #xqimg{
+            width: 180px;
+            height:180px;
+            background-color: aquamarine;
+            margin-left: 40px;
+            margin-top: 20px;
+            border-radius: 20px;
+            padding-left: 20px;
+        }
+
+        #xqname{
+            font-size: 23px;
+            width: 200px;
+            height: 30px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="big">
+        <div id="leftBox">
+            <div id="logo">
+                <img src="applogo2.png">
+            </div>
+            <div id="leftList">
+                <div id="recommend">
+                    <div id="recommendimg"><img src="recommendimg.png"></div>
+                    <div id="recommendword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/main.html" style="text-decoration: none;">推荐</a>
+                    </div>
+                </div>
+                <div id="jingxuan">
+                    <div id="jingxuanimg"><img src="jingxuanimg.png"></div>
+                    <div id="jingxuanword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/jingxuan.html" style="text-decoration: none;">精选</a>
+                    </div>
+                </div>
+                <div id="divide">______________________</div>
+                <div id="my">我的</div>
+                <div id="favorite">
+                    <div id="favoriteimg"><img src="favoriteimg.png"></div>
+                    <div id="facoriteword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/favorite.html" style="text-decoration: none;">我喜欢的音乐</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="rightMainBox">
+            <div id="topBox">
+                <div id="topRight">
+                    <ul1>
+                        <li1>
+                            <a1 href=""><img src="other2.png"></a1>
+                        </li1>
+                        <li1>
+                            <a1 href="">\/</a1>
+                        </li1>
+                        <li1>
+                            <a1 href=""><img src="level.png"></a1>
+                        </li1>
+                        <li1>
+                            <a1 href="">邮兵1号</a1>
+                        </li1>
+                        <li1>
+                            <a1 href=""><img src="headimage2.png"></a1>
+                        </li1>
+                    </ul1>
+                </div>
+                <div id="topLeft">
+                    <div id="backButton"><img src="back1.png" title="后退"></div>
+                    <div id="bigSearchBox">
+                        <button onclick="performSearch()" id="botton1"><img src="searchbotton2.png"></button>
+                        <input type="search" id="search1" placeholder="搜索..." list="suggestions" aria-label="搜索框">
+                    </div>
+                    <div id="shiqu">
+                        <div id="imageshiqu"><img src="shiqu.png" title="听歌识曲"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="thanks">
+                <h3>在这里感谢各位学长学姐这学期来的付出，尤其是我的导师傅学长和赵学姐，十分耐心地为我答疑解惑，指出我作业中的问题。<br/><br/>
+                这次寒假考核对我来说很有难度，主要是因为我JavaScript部分学的很不好，网络请求一直有问题，我尽量去网上搜索了有关的知识<br/>
+            ，利用他们完成了一些功能，但还是有很多无法完成的，请学长学姐见谅。<br/><br/>
+            这半年来我跟着红岩网校学习收获了很多，我的HTML和css日益熟练，现在用起来也是得心应手，但是JavaScript部分就没那么好了，<br/>
+            不论我是否还能跟着红岩网校继续学习，我都会在下学期自学完JavaScript部分的B站网课，攻克自己薄弱的地方。<br/><br/>
+            最后麻烦学长学姐看看我完成的寒假考核，辛苦了。
+
+            </h3>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

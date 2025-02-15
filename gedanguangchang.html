@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐</title>
+    <style>
+        /*整个页面范围*/
+        #big {
+            width: 100%;
+            height: 750px;
+            background-color: rgba(224, 124, 42, 0.801);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /*侧边栏，独立于主体*/
+        #leftBox {
+            width: 200px;
+            height: 100%;
+            background-color: #f0f3f6;
+            float: left;
+        }
+
+        #logo {
+            float: top;
+        }
+
+        #leftList{
+            width: 200px;
+            height: 40%;
+            background-color: transparent;
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+
+        #recommend{
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        #recommend:hover{
+            background-color: #e5e8ec;
+        }
+
+        #recommendword{
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #recommendimg{
+            height: 30px;
+        }
+
+        #jingxuan{
+            width: 160px;
+            height: 35px;
+            background-color: #df5152;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+        }
+
+        #jingxuan:hover{
+            background-color: #df5152;
+        }
+
+        #jingxuanword{
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;            
+        }
+
+
+        #jingxuanimg{
+            height: 32px;
+        }
+
+        #divide{
+            color: rgb(167, 165, 165);
+            padding-top: 10px;
+        }
+
+        #my{
+            width: 40px;
+            height: 20px;
+            font-size: 12px;
+            color: rgb(167, 165, 165);
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+
+        #favorite{
+            width: 160px;
+            height: 35px;
+            background-color: #f0f3f6;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding-top: 10px;
+            border-radius: 5px;
+
+        }
+
+        #favorite:hover{
+            background-color: #e5e8ec;
+        }
+
+        #favoriteword{
+            width: 40px;
+            height: 30px;
+            background-color: transparent;
+            text-decoration: none;           
+        }
+
+
+        #favoriteimg{
+            height: 32px;
+        }
+
+        /*右侧主体*/
+        #rightMainBox {
+            width: 80%;
+            height: 100%;
+            background-color: rgb(250, 250, 249);
+            float: right;
+            flex-grow: 1;
+        }
+
+        /*右侧主体上方栏，包括左上搜索组和右上头像组*/
+        #topBox {
+            width: 100%;
+            height: 70px;
+            background-color: #f7f9fc;
+            float: top;
+        }
+
+        /*右上头像*/
+        #topRight {
+            height: 70px;
+            width: 50%;
+            float: right;
+        }
+
+        ul1 {
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        li1 {
+            float: right;
+            background-color: #f7f9fc;
+        }
+
+        a1 {
+            padding: 0 5px;
+            height: 70px;
+            line-height: 70px;
+            display: block;
+            color: gray;
+            text-decoration: none;
+        }
+
+        a1:hover {
+            color: black;
+        }
+
+        /*左上搜索*/
+        #topLeft {
+            height: 70px;
+            width: 36%;
+            float: left;
+            background-color: #f7f9fc;
+            display: flex;
+        }
+
+        #backButton {
+            float: left;
+            margin: 0 auto;
+        }
+
+        #shiqu {
+            height: 70px;
+            width: 15%;
+            float: right;
+            margin-right: 25px;
+            background-color: transparent
+        }
+
+        #imageshiqu {
+            float: right;
+        }
+
+        /*考虑把放大镜图标（带搜索功能按钮）和透明搜索框放进大搜索盒子里*/
+        #bigSearchBox {
+            width: 250px;
+            height: 35px;
+            background: #f2eff7;
+            border: 1px solid #ece1fd;
+            border-radius: 10px;
+            margin: auto 0 auto 10px;
+            display: flex;
+        }
+
+
+        input[type="search"] {
+            width: 190px;
+            height: 30px;
+            border: 1px solid transparent;
+            background-color: transparent;
+            border-radius: 5px;
+            font-size: 14px;
+            color: gray;
+        }
+
+        input[type="search"]:focus {
+            border-color: transparent;
+            outline: none;
+        }
+
+        #botton1 {
+            border-color: transparent;
+            background-color: transparent;
+            margin-bottom: 2px;
+
+        }
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #henglist{
+            width: 180px;
+            height: 20px;
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            padding-top: 20px;
+        }
+
+        #littlejx{
+            padding-right: 20px;
+            padding-left: 40px;
+            background-color: transparent;
+            font-size: 18px;
+        }
+
+        #gedanguangchang{
+            background-color: transparent;
+            font-size: 18px;
+        }
+
+        #littlediv{
+            display: flex;
+            flex-direction: row;
+            width: 180px;
+            height: 20px;
+            padding-left: 50px;
+            margin-top: -18px;
+        }
+
+        #jx{
+            background-color: transparent;
+            font-size: 32px;
+            color: transparent;
+        }
+
+        #gdgc{
+            background-color: transparent;
+            padding-left: 60px;
+            font-size: 32px;
+            color: #df5152;
+        }
+
+        #gdgclist{
+            width: 800px;
+            height: 50px;
+            background-color: transparent;
+            margin-top: 30px;
+            margin-left: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #gdgctuijian{
+            width: 50px;
+            height: 30px;
+            border:  solid 1px rgb(172, 167, 167);
+            border-radius: 15px;
+            align-content: center;
+            padding-left: 10px;
+            margin-right: 5px;
+        }
+
+        #offical{
+            width: 50px;
+            height: 30px;
+            border:  solid 1px rgba(235, 128, 128, 0.801);
+            background-color: #f5a3a3;
+            color: red;
+            border-radius: 15px;
+            align-content: center;
+            padding-left: 10px;
+            margin-right: 5px;
+        }
+
+        #chinese{
+            width: 50px;
+            height: 30px;
+            border:  solid 1px rgb(172, 167, 167);
+            border-radius: 15px;
+            align-content: center;
+            padding-left: 10px;
+            margin-right: 5px;
+        }
+
+        #rock{
+            width: 50px;
+            height: 30px;
+            border:  solid 1px rgb(172, 167, 167);
+            border-radius: 15px;
+            align-content: center;
+            padding-left: 10px;
+            margin-right: 5px;
+        }
+
+        #electric{
+            width: 50px;
+            height: 30px;
+            border:  solid 1px rgb(172, 167, 167);
+            border-radius: 15px;
+            align-content: center;
+            padding-left: 10px;
+            margin-right: 5px;
+        }
+
+        #more{
+            width: 80px;
+            height: 30px;
+            border:  solid 1px rgb(172, 167, 167);
+            border-radius: 15px;
+            align-content: center;
+            padding-left: 10px;
+            margin-right: 5px;
+        }
+
+
+        #gdgcone{
+            width: 95%;
+            height: 270px;
+            background-color: rgb(251, 252, 251);
+            margin-top: 10px;
+            margin-left: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #gdgconebox{
+            width:200px;
+            height: 270px;
+            border-radius: 16px;
+            background-color: #b8b5b5;
+            margin-right: 28px;
+            margin-bottom: 20px;
+        }
+
+
+        #gdgctwo{
+            width: 95%;
+            height: 270px;
+            background-color: rgb(245, 248, 245);
+            margin-top: 10px;
+            margin-left: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #gdgctwobox{
+            width:200px;
+            height: 270px;
+            border-radius: 16px;
+            background-color: #b8b5b5;
+            margin-right: 28px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="big">
+        <div id="leftBox">
+            <div id="logo">
+                <img src="applogo2.png">
+            </div>
+            <div id="leftList">
+                <div id="recommend">
+                    <div id="recommendimg"><img src="recommendimg.png"></div>
+                    <div id="recommendword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/main.html" style="text-decoration: none;">推荐</a>
+                    </div>
+                </div>
+                <div id="jingxuan">
+                    <div id="jingxuanimg"><img src="jingxuanimg.png"></div>
+                    <div id="jingxuanword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/jingxuan.html" style="text-decoration: none;">精选</a>
+                    </div>
+                </div>
+                <div id="divide">______________________</div>
+                <div id="my">我的</div>
+                <div id="favorite">
+                    <div id="favoriteimg"><img src="favoriteimg.png"></div>
+                    <div id="facoriteword">
+                        <a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/favorite.html" style="text-decoration: none;">我喜欢的音乐</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="rightMainBox">
+            <div id="topBox">
+                <div id="topRight">
+                    <ul1>
+                        <li1>
+                            <a1 href=""><img src="other2.png"></a1>
+                        </li1>
+                        <li1>
+                            <a1 href="">\/</a1>
+                        </li1>
+                        <li1>
+                            <a1 href=""><img src="level.png"></a1>
+                        </li1>
+                        <li1>
+                            <a1 href="">邮兵1号</a1>
+                        </li1>
+                        <li1>
+                            <a1 href=""><img src="headimage2.png"></a1>
+                        </li1>
+                    </ul1>
+                </div>
+                <div id="topLeft">
+                    <div id="backButton"><img src="back1.png" title="后退"></div>
+                    <div id="bigSearchBox">
+                        <button onclick="performSearch()" id="botton1"><img src="searchbotton2.png"></button>
+                        <input type="search" id="search1" placeholder="搜索..." list="suggestions" aria-label="搜索框">
+                    </div>
+                    <div id="shiqu">
+                        <div id="imageshiqu"><img src="shiqu.png" title="听歌识曲"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="henglist">
+                <div id="littlejx"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/jingxuan.html" style="text-decoration: none;">精选</a></div>
+                <div id="gedanguangchang"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanguangchang.html" style="text-decoration: none;">歌单广场</a></div>
+            </div>
+            <div id="littlediv">
+                <div id="jx">-</div>
+                <div id="gdgc">-</div>
+            </div>
+            <div id="gdgclist">
+                <div id="gdgctuijian">推荐</div>
+                <div id="offical">官方</div>
+                <div id="chinese">华语</div>
+                <div id="rock">摇滚</div>
+                <div id="electric">电子</div>
+                <div id="more">更多分类\/</div>
+            </div>
+            <div id="gdgcone">
+                <div id="gdgconebox"><img src="gedan2.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">Balter音乐节 | 英国人气电子乐队Kurupt FM酷炫亮相</a></div>
+                <div id="gdgconebox"><img src="gedan4.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球电音趋势 | John Summit全新单曲热播中</a></div>
+                <div id="gdgconebox"><img src="gedan7.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">好久不见 | 偶遇在深秋午后</a></div>
+                <div id="gdgconebox"><img src="gedan8.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">早教启蒙儿歌 | 给0-3岁宝宝的早教游戏儿歌</a></div>
+                <div id="gdgconebox"><img src="gedan10.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">听Taylor Swift热门精选 | 霉霉热门歌曲合辑</a></div>
+            </div>
+            <div id="gdgctwo">
+                <div id="gdgctwobox"><img src="gedan1.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球R&B趋势 | Muni Long全新单曲甜蜜热播中</a></div>
+                <div id="gdgctwobox"><img src="gedan3.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球说唱趋势 | bbno$全新单曲持续热播中</a></div>
+                <div id="gdgctwobox"><img src="gedan5.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">华语说唱趋势 | KEY.L刘聪最新单曲火热循环中</a></div>
+                <div id="gdgctwobox"><img src="gedan6.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">全球摇滚趋势 | Inhaler新单热播中</a></div>
+                <div id="gdgctwobox"><img src="gedan9.png" style="height: 200px;"><a href="file:///C:/Users/ASUS/Desktop/%E5%89%8D%E7%AB%AF/%E5%AF%92%E5%81%87%E8%80%83%E6%A0%B8/gedanxq.html" style="text-decoration: none;">Morning Classical | 收获今日的第一缕阳光</a></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
